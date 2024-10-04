@@ -1,0 +1,334 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    /* 定义主题颜色和文本颜色 */
+    --card-light: #ffffff18;
+    --card-text-color: #3f4349a5;
+}
+
+/* 定义自定义字体 */
+@font-face {
+    font-family: 'CascadiaNextSC';
+    src: url(/fonts/CascadiaNextSC-Simplified.woff2);
+}
+
+@font-face {
+    font-family: 'CEFFontsCJK';
+    src: url(/fonts/CEFFontsCJK-Regular.woff2);
+}
+
+/* html {
+    background: #ee9ca7;
+    background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7);
+    background: linear-gradient(to right, #ffdde1, #ee9ca7);
+} */
+
+body {
+    /*全局样式设置*/
+    margin: 0;
+    padding: 20px 40px;/*统一的padding，去掉重复*/
+    overflow: auto;
+}
+
+a {
+    /* 超链接样式 */
+    text-decoration: none;
+    color: var(--theme-dark);
+}
+
+p {
+    margin: 0;
+}
+
+.custom-hr {
+    border: none; /* 去掉默认边框 */
+    border-top: 1px solid #1d1d1d; /* 顶部边框 */
+    margin: 10px auto; /* 上下外边距 */
+    width: 75%; /* 分割线宽度 */
+}
+
+.css-img {
+    /*图片样式*/
+    width: 40px;
+    border-radius: 12px;
+}
+
+.css-02 {
+    /* 主要容器样式 */
+    border-radius: 20px;
+    display: flex;
+    align-items: start;
+    padding-top: 20px;
+    column-gap: 40px;
+}
+
+.css-0201 {
+    /* 卡片样式 */
+    border-radius: 20px;
+    background-color: var(--card-light);
+    box-shadow: #0000001e 0px 5px 15px;
+    backdrop-filter: blur(5px);
+    width: 200px;
+    padding: 40px 0 30px; /* 统一的padding格式 */
+    top: 15px;
+    text-align: center;
+    flex-shrink: 0;
+    position: sticky;
+    z-index: 1000;
+    font-family: 'CEFFontsCJK', sans-serif;
+}
+
+/* 响应式设计媒体查询 */
+@media screen and (max-width: 34em) {
+    .css-02 {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .css-0201 {
+        position: relative;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .css-title {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 35em) {
+    .css-0201 {
+        display: inline-block;
+    }
+    .css-title {
+        display: none;
+    }
+}
+
+/* 媒体查询合并 */
+@media screen and (min-width: 48em), screen and (min-width: 62em), screen and (min-width: 80em) {
+    .css-0201 {
+        display: inline-block;
+    }
+}
+
+.css-intro {
+    /* 介绍样式 */
+    border-radius: 50%;
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+}
+
+.css-avatar {
+    /* 头像样式 */
+    width: 100px;
+    height: 100px;
+    border-radius: 30%;
+    cursor: pointer;
+    animation: light 4.45s ease-in-out infinite;
+}
+
+@keyframes light {
+    /* 动画关键帧 */
+    0% { box-shadow: 0 0 24px #eaa89c; }
+    50% { box-shadow: 0 0 8px #ffffff00; }
+    100% { box-shadow: 0 0 24px #eaa89c; }
+}
+
+.css-name, .css-description, .css-bottom, .css-bottom1 {
+    width: 100%;
+    height: auto;
+}
+
+.css-name {
+    margin-top: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.css-description {
+    margin-top: 10px;
+    padding-bottom: 25px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.css-bottom {
+    margin-top: 30px;
+    font-size: 13px;
+}
+.css-bottom1 {
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.css-020100 {
+    /* 可交互容器样式 */
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 8px 20px;
+    column-gap: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.css-020100:hover {
+    /* 鼠标悬停效果 */
+    background-color: #f1eeff55;
+}
+
+.css-020101 {
+    /* 列表项样式 */
+    font-size: 14px;
+    line-height: 1.33;
+    margin-left: 8px; /* 只保留left margin */
+}
+
+.css-0202 {
+    /*列表容器样式*/display: inline-flex;
+    align-items: stretch;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+    font-family: 'CascadiaNextSC', sans-serif;
+}
+
+.css-title {
+    position: absolute;
+    right: 0;
+    width: auto;
+    height: auto;
+    gap: 10px;
+    padding-right: 10px;
+    z-index: 1001;
+}
+
+.css-020200 {
+    /*内部容器样式*/display: flex;
+    flex-direction: column;
+    transition: all 0.5s ease;
+}
+
+.css-020222 {
+    /* 列表项标题样式 */
+    font-size: 16px;
+    line-height: 1.33;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.css-020201 {
+    /* 网格布局 */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px 20px; /* 合并行间距和列间距 */
+    margin-bottom: 30px;
+}
+
+/* 响应式网格布局 */
+@media screen and (min-width: 30em) {
+    .css-020201 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    body {
+        padding: 15px 50px;
+    }
+}
+
+@media screen and (min-width: 48em) {
+    .css-020201 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 62em) {
+    .css-020201 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 80em) {
+    .css-020201 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (min-width: 90em) {
+    .css-020201 {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+.css-020202 {
+    /* 可交互卡片样式 */
+    border-radius: 20px;
+    background-color: var(--card-light);
+    box-shadow: #0000001e 0px 5px 15px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    padding: 15px;
+    column-gap: 15px;
+    transition: all 1s;
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+}
+
+.css-020202:hover {
+    /* 鼠标悬停效果 */
+    box-shadow: #60674c44 0px 7px 15px;
+}
+
+.css-020203 {
+    /* 图标样式 */
+    flex-shrink: 0;
+    width: 60px;
+}
+
+.css-020204 {
+    /* 描述文本样式 */
+    font-size: 16px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.css-020205 {
+    /* 额外文本样式 */
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bolder;
+    color: var(--card-text-color);
+}
+
+#backToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    border-radius: 15px;
+    background-color: var(--card-light);
+    box-shadow: #0000001e 0px 6px 15px;
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1001;/*确保按钮在上层*/
+}
+
+#bgAnimate {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: -1;
+}
