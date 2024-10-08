@@ -332,3 +332,112 @@ p {
      height: 100%;
      z-index: -1;
 }
+
+
+
+.search-container {
+    display: flex; /* 使用flex布局 */
+    align-items: center; /* 垂直对齐 */
+    margin: 10px;
+    position: relative; /* 让子元素可以绝对定位 */
+}
+
+#searchInput {
+    padding: 10px; /* 上下内边距 */
+    min-width: 50%; /* 设置输入框的最小宽度 */
+    box-sizing: border-box; /* 包含内边距和边框 */
+    border: #1e261b3d solid 2px;
+    border-radius: 15px; 
+    background-color: var(--card-light);
+    box-shadow: #0000001e 0px 6px 15px;
+    backdrop-filter: blur(5px);
+    z-index: 1000; /* 保证输入框在上层 */
+}
+
+/* 设置聚焦时的边框样式 */
+#searchInput:focus {
+    outline: none; /* 去掉默认的外部轮廓 */
+    border: #1e261b5d solid 2px;
+    box-shadow: #0000001e 0px 6px 15px;
+    backdrop-filter: blur(5px);
+}
+
+#searchButton {
+    border: none; /* 无边框 */
+    background: none; /* 背景透明 */
+    margin-left: -35px; /* 调整按钮的位置，使其与输入框贴合 */
+    cursor: pointer; /* 鼠标悬停时的指针 */
+    height: 100%; /* 按钮高度与输入框一致 */
+    display: flex; /* 使用flex布局使图标居中 */
+    align-items: center; /* 垂直居中 */
+    z-index: 1001; /* 保证按钮在上层 */
+}
+
+.search-icon {
+    width: 20px; /* 根据需要调整图标大小 */
+    height: 20px; /* 根据需要调整图标高度 */
+}
+
+@media screen and (min-width: 0em) {
+    #searchInput {
+        min-width: 100%;
+    }
+}
+
+@media screen and (min-width: 48em) {
+    #searchInput {
+        min-width: 90%;
+    }
+}
+
+@media screen and (min-width: 62em) {
+    #searchInput {
+        min-width: 70%;
+    }
+    
+    .search-container {
+        justify-content: center; /* 水平居中 */
+    }
+}
+
+@media screen and (min-width: 80em) {
+    #searchInput {
+        min-width: 60%;
+    }
+}
+
+@media screen and (min-width: 90em) {
+    #searchInput {
+        min-width: 50%;
+    }
+}
+
+#searchResult {
+    display: none;
+    margin-top: 15px;
+    gap: 12px;
+}
+
+
+
+
+.alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff60;
+    backdrop-filter: blur(5px);
+    box-shadow: #00000024 0px 6px 15px;
+    padding: 20px;
+    border: #1e261b3d solid 2px;
+    border-radius: 12px;
+    z-index: 1001;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+}

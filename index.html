@@ -14,6 +14,16 @@
 <body>
     <div id="bgAnimate"></div>
 
+    <!-- 添加搜索框和按钮 -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="想搜点什么...">
+        <button id="searchButton">
+            <img src="/img/menu/search.svg" alt="搜索" class="search-icon">
+        </button>
+    </div>
+    <div id="searchResult"></div>
+
+
     <div class="css-02">
         <div class="css-0201">
             <div class="css-intro">
@@ -64,7 +74,6 @@
         </div>
 
         <div class="css-0202">
-
             <div id="data">
                 <!-- 使用函数封装链接和描述 -->
                 <div class="css-020200">
@@ -246,6 +255,92 @@
             script.onerror = () => console.error(`加载脚本失败: ${src}`); // 错误处理
             document.body.appendChild(script);
         });
+
+
+        // 搜索功能
+        function executeSearch() {
+            const input = document.getElementById('searchInput').value.trim().toLowerCase();
+            const result = document.getElementById('searchResult');
+
+            // 清空结果区域
+            result.innerHTML = '';
+
+            // 如果输入框为空，弹出提示并清空搜索结果
+            if (!input) {
+                result.style.display = 'none'; // 隐藏结果区域
+                showAlert('还没输入搜索内容呢'); // 弹出提示
+                return;
+            }
+
+            const links = Array.from(document.querySelectorAll('#data a'));
+            const matches = links.filter(link => link.textContent.toLowerCase().includes(input));
+
+            result.style.display = matches.length ? 'grid' : 'none'; // 根据是否有匹配设置显示状态
+
+            if (matches.length > 0) {
+                matches.forEach(link => {
+                    const clonedLink = link.cloneNode(true);
+                    clonedLink.classList.add('css-020202'); // 添加新样式类
+                    result.appendChild(clonedLink);
+                });
+            } else {
+                result.innerHTML = '没有找到相关内容';
+            }
+        }
+
+        // 弹出提示信息函数
+        let alertTimeout; // 定义全局变量用于控制提示框
+        function showAlert(message) {
+            const existingAlert = document.querySelector('.alert');
+            const overlay = document.querySelector('.overlay');
+
+            // 如果已经有提示框存在，则清除之前的定时器，延长存在时间
+            if (existingAlert) {
+                clearTimeout(alertTimeout);
+                document.body.removeChild(existingAlert);
+                document.body.removeChild(overlay);
+            }
+
+            const alert = document.createElement('div');
+            alert.className = 'alert'; // 添加样式类
+            alert.textContent = message;
+
+            // 设置模糊背景的样式
+            const newOverlay = document.createElement('div');
+            newOverlay.className = 'overlay'; // 添加模糊背景样式类
+
+            document.body.appendChild(newOverlay);
+            document.body.appendChild(alert);
+
+            // 设置定时器，2.5秒后自动关闭提示
+            alertTimeout = setTimeout(() => {
+                document.body.removeChild(alert);
+                document.body.removeChild(newOverlay);
+            }, 2500);
+        }
+
+        // 监听输入框的键盘事件
+        document.getElementById('searchInput').addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                try {
+                    executeSearch(); // 按下 Enter 键触发搜索
+                } catch (error) {
+                    console.error("执行搜索时发生错误: ", error);
+                    showAlert('搜索时发生错误，请重试。');
+                }
+            }
+        });
+
+        // 监听搜索按钮的点击事件
+        document.getElementById('searchButton').addEventListener('click', () => {
+            try {
+                executeSearch(); // 点击搜索按钮触发搜索
+            } catch (error) {
+                console.error("执行搜索时发生错误: ", error);
+                showAlert('搜索时发生错误，请重试。');
+            }
+        });
+
 
         let string = `
         ---------------------------------------
